@@ -14,7 +14,7 @@ import java.util.Date;
 public class StudentGroup implements StudentArrayOperation {
 
 	private Student[] students;
-	private currentIndex;
+
 	/**
 	 * DO NOT remove or change this constructor, it will be used during task check
 	 * @param length
@@ -33,7 +33,7 @@ public class StudentGroup implements StudentArrayOperation {
 	public void setStudents(Student[] students) {
 		// Add your implementation here
 		int index = this.students.length;
-		for (String student: students
+		for (Student student: students
 			 ) {
 			this.students[index++] = student;
 		}
@@ -49,16 +49,20 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void setStudent(Student student, int index) throws IllegalArgumentException {
 		// Add your implementation here
-		if(student == null || index <0 || index >= students.length)
+		if(student == null || index < 0 || index >= students.length)
+		{
 			throw new IllegalArgumentException("Students null");
+		}
 		else
+		{
 			this.students[index] = student;
+		}
 	}
 
 	@Override
 	public void addFirst(Student student) throws IllegalArgumentException{
 		// Add your implementation here
-		if(student == null || index <0 || index >= this.students.length)
+		if(student == null )
 			throw new IllegalArgumentException("Student  null");
 		else {
 			for (int i = this.students.length; i > 0; i--) {
@@ -71,10 +75,10 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void addLast(Student student) throws IllegalArgumentException {
 		// Add your implementation here
-		if(student == null || index <0 || index >= this.students.length)
+		if(student == null)
 			throw new IllegalArgumentException("Student  null");
 		else {
-			int index = this.students.length
+			int index = this.students.length;
 			this.students[index] = student;
 		}
 	}
@@ -113,7 +117,7 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException("Student  null");
 		else {
 			int indexArr = this.students.length - 1 ;
-			int index;
+			int index = 0 ;
 			for(int i=0; i<this.students.length; i++)
 			{
 				if(this.students[i] == student)
@@ -150,7 +154,7 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException("Student  null");
 		else {
 
-			int index;
+			int index = 0;
 			int tillThis = this.students.length;
 			for(int i=0; i<tillThis; i++)
 			{
