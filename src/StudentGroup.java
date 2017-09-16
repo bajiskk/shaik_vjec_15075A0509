@@ -14,7 +14,7 @@ import java.util.Date;
 public class StudentGroup implements StudentArrayOperation {
 
 	private Student[] students;
-	
+	private currentIndex;
 	/**
 	 * DO NOT remove or change this constructor, it will be used during task check
 	 * @param length
@@ -26,63 +26,156 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getStudents() {
 		// Add your implementation here
-		return null;
+		return this.students;
 	}
 
 	@Override
 	public void setStudents(Student[] students) {
 		// Add your implementation here
+		int index = this.students.length;
+		for (String student: students
+			 ) {
+			this.students[index++] = student;
+		}
 	}
 
 	@Override
 	public Student getStudent(int index) {
 		// Add your implementation here
-		return null;
+
+		return this.students[index];
 	}
 
 	@Override
-	public void setStudent(Student student, int index) {
+	public void setStudent(Student student, int index) throws IllegalArgumentException {
 		// Add your implementation here
+		if(student == null || index <0 || index >= students.length)
+			throw new IllegalArgumentException("Students null");
+		else
+			this.students[index] = student;
 	}
 
 	@Override
-	public void addFirst(Student student) {
+	public void addFirst(Student student) throws IllegalArgumentException{
 		// Add your implementation here
+		if(student == null || index <0 || index >= this.students.length)
+			throw new IllegalArgumentException("Student  null");
+		else {
+			for (int i = this.students.length; i > 0; i--) {
+				this.students[i] = this.students[i - 1];
+			}
+			this.students[0] = student;
+		}
 	}
 
 	@Override
-	public void addLast(Student student) {
+	public void addLast(Student student) throws IllegalArgumentException {
 		// Add your implementation here
+		if(student == null || index <0 || index >= this.students.length)
+			throw new IllegalArgumentException("Student  null");
+		else {
+			int index = this.students.length
+			this.students[index] = student;
+		}
 	}
 
 	@Override
-	public void add(Student student, int index) {
+	public void add(Student student, int index) throws IllegalArgumentException {
 		// Add your implementation here
+		if(student == null || index <0 || index >= this.students.length)
+			throw new IllegalArgumentException("Student  null");
+		else {
+			for (int i = this.students.length; i > index; i--) {
+				this.students[i] = this.students[i - 1];
+			}
+			this.students[index] = student;
+		}
 	}
 
 	@Override
 	public void remove(int index) {
 		// Add your implementation here
+		if( index <0 || index >= this.students.length)
+			throw new IllegalArgumentException("Student  null");
+		else {
+			int indexArr = this.students.length -1 ;
+			for (int i = index; i<indexArr; i++) {
+				this.students[i] = this.students[i + 1];
+			}
+			this.students[indexArr] = null;
+		}
 	}
 
 	@Override
 	public void remove(Student student) {
 		// Add your implementation here
+		if( student == null)
+			throw new IllegalArgumentException("Student  null");
+		else {
+			int indexArr = this.students.length - 1 ;
+			int index;
+			for(int i=0; i<this.students.length; i++)
+			{
+				if(this.students[i] == student)
+					index = i;
+				break;
+			}
+			for (int i = index; i<indexArr; i++) {
+				this.students[i] = this.students[i + 1];
+			}
+			this.students[indexArr] = null;
+		}
 	}
+
 
 	@Override
 	public void removeFromIndex(int index) {
 		// Add your implementation here
+		if( index <0 || index >= this.students.length)
+			throw new IllegalArgumentException("Student  null");
+		else {
+			int indexArr = this.students.length ;
+			index++;
+			for (int i = index; i<indexArr; i++) {
+				this.students[i] = null;
+			}
+
+		}
 	}
 
 	@Override
 	public void removeFromElement(Student student) {
 		// Add your implementation here
+		if( student == null)
+			throw new IllegalArgumentException("Student  null");
+		else {
+
+			int index;
+			int tillThis = this.students.length;
+			for(int i=0; i<tillThis; i++)
+			{
+				if(this.students[i] == student)
+					index = i;
+				break;
+			}
+			index ++;
+			for (int i = index; i<tillThis; i++) {
+				this.students[i]= null;
+			}
+
+		}
 	}
 
 	@Override
 	public void removeToIndex(int index) {
 		// Add your implementation here
+		if( index <0 || index >= this.students.length)
+			throw new IllegalArgumentException("Student  null");
+		else {
+
+		}
+
+
 	}
 
 	@Override
